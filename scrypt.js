@@ -59,7 +59,7 @@ function renderTasks() {
     });
 
     const pending = tasks.filter(task => !task.done).length;
-    counter.textContent = `Pendentes: ${pending} | Total: ${tasks.length}`;
+    counter.textContent = `Pending: ${pending} | All: ${tasks.length}`;
 
     localStorage.setItem("tasks", JSON.stringify(tasks));
 }
@@ -79,8 +79,6 @@ taskList.addEventListener("click", function (event) {
     const li = event.target.closest("li");
     if (!li) return;
     
-    console.log(event.target.tagName, li.dataset.id);
-
     const id = Number(li.dataset.id);
 
     if (event.target.tagName === "BUTTON") {
@@ -95,7 +93,6 @@ taskList.addEventListener("click", function (event) {
     const task = tasks.find(task => task.id === id);
     if (!task) return;
 
-    console.log("clicou na tarefa", id);
     clearTimeout(clickTimer);
     clickTimer = setTimeout(() => {
         task.done = !task.done;
@@ -107,14 +104,11 @@ taskList.addEventListener("dblclick", function (event) {
     clearTimeout(clickTimer);
     if (event.target.tagName !== "SPAN") return;
     const span = event.target;
-    console.log(span.textContent);
-    console.log("Editar Tarefa");
     const input = document.createElement("input");
     input.value = span.textContent;
     span.replaceWith(input);
     input.focus();
     input.addEventListener("keydown", function(event) {
-        console.log("tecla:", event.key);
         if (event.key === "Enter") {
             const li = input.closest("li");
             const id = Number(li.dataset.id);
@@ -143,4 +137,3 @@ markAllBtn.addEventListener("click", function() {
 });
 
 renderTasks();
-console.log("taskList:", taskList);
