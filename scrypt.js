@@ -62,9 +62,8 @@ function renderTasks() {
     counter.textContent = `Pendentes: ${pending} | Total: ${tasks.length}`;
 
     localStorage.setItem("tasks", JSON.stringify(tasks));
-} // ✅ FECHA renderTasks AQUI
+}
 
-// ✅ listeners fora do renderTasks (rodam só 1 vez)
 document.querySelectorAll("#filters button").forEach(button => {
     button.addEventListener("click", () => {
         document.querySelectorAll("#filters button").forEach(button => {
@@ -84,7 +83,6 @@ taskList.addEventListener("click", function (event) {
 
     const id = Number(li.dataset.id);
 
-  // clicou no botão ❌
     if (event.target.tagName === "BUTTON") {
         li.classList.add("removing");
         setTimeout(() => {
@@ -94,7 +92,6 @@ taskList.addEventListener("click", function (event) {
         return;
     }
 
-  // clicou no item (li / span)
     const task = tasks.find(task => task.id === id);
     if (!task) return;
 
@@ -145,6 +142,5 @@ markAllBtn.addEventListener("click", function() {
     renderTasks();
 });
 
-// ✅ renderiza quando abre
 renderTasks();
 console.log("taskList:", taskList);
