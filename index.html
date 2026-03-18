@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app">
+        <h1>Minhas Tarefas</h1>
+        <p id="counter"></p>
+
+        <div id="filters" class="filters">
+            <button data-filter="all">Todas</button>
+            <button data-filter="pending">Pendentes</button>
+            <button data-filter="done">Concluídas</button>
+        </div>
+
+        <div class="actions">
+            <button id="markAllBtn">Marcar todas</button>
+            <button id="clearDoneBtn">Limpar concluídas</button>
+        </div>
+
+        <div class="task-input">
+            <input type="text" id="taskInput" placeholder="Digite uma tarefa">
+            <button id="addBtn">Adicionar</button>
+        </div>
+
+        <ul id="taskList"></ul>
+    </div>
+    <script src="scrypt.js"></script>
+</body>
+</html>
